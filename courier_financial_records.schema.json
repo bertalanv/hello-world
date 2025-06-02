@@ -1,0 +1,57 @@
+text = {
+    "format": {
+        "type": "json_schema",
+        "name": "courier_financial_records",
+        "strict": True,
+        "schema": {
+            "type": "object",
+            "properties": {
+                "Courier ID": {
+                    "type": "string",
+                    "description": "Unique identifier for the courier."
+                },
+                "entries": {
+                    "type": "array",
+                    "description": "List of entries representing financial transactions.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "date": {
+                                "type": "string",
+                                "description": "Date of the transaction in dd.mm.yyyy format."
+                            },
+                            "transfer_type": {
+                                "type": "string",
+                                "description": "Type of the financial transfer."
+                            },
+                            "amount": {
+                                "type": "number",
+                                "description": "Amount in the transaction."
+                            }
+                        },
+                        "required": ["date", "transfer_type", "amount"],
+                        "additionalProperties": False
+                    }
+                },
+                "total_earnings": {
+                    "type": "object",
+                    "description": "Summary of total earnings.",
+                    "properties": {
+                        "issue_date": {
+                            "type": "string",
+                            "description": "Date on which the total earnings were calculated in dd.mm.yyyy format."
+                        },
+                        "amount": {
+                            "type": "number",
+                            "description": "Total earnings amount."
+                        }
+                    },
+                    "required": ["issue_date", "amount"],
+                    "additionalProperties": False
+                }
+            },
+            "required": ["Courier ID", "entries", "total_earnings"],
+            "additionalProperties": False
+        }
+    }
+}
